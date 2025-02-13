@@ -20,6 +20,10 @@ SmartNest brings all of your compatible smart devices to the tip of your fingers
 - Automation rules should be feasable: does not conflict with one another, execution time not set to the past, ..., etc.
 - Commands should not violate the devices' limits.
 
+## Q&A
+- Can I control a group of devices all at once?
+    > Not at this stage, but we've been constantly hearing users talking about this. This item has already been tracked in our backlog, and there's currently no other items blocking it, so it might be implemented in the near future.
+- 
 
 ## Classify Nouns/Verbs into Classes/Attributes
 1. Dashboard
@@ -103,7 +107,15 @@ SmartNest brings all of your compatible smart devices to the tip of your fingers
 ## UML Class Diagram
 ![uml](./assets/images/uml.png)
 
-## Low Fidelity Prototype
+## Low Fidelity Wireframe
+1. Monitor
+    - *"As a property manager, I want to monitor the status of smart devices across all my properties from a unified dashboard so that I can efficiently identify and address any issues."*
+    - *"As a homeowner, I want to view the real-time status of all my connected devices on a single, intuitive dashboard so that I can quickly check and control my home from anywhere."*
+    ![device](./assets/images/wireframe_device.png)
+2. Automation
+    - *"As a homeowner, I want to create and schedule automation rules (like turning on lights at dusk and adjusting the thermostat at bedtime) so that my home operates efficiently and comfortably without my constant attention."*
+    ![automation](./assets/images/wireframe_rule.png)
+
 
 <style>
 v { background-color: DarkRed }
