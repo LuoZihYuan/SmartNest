@@ -24,16 +24,17 @@ SmartNest brings all of your compatible smart devices to the tip of your fingers
 ## Classify Nouns/Verbs into Classes/Attributes
 1. Dashboard
     - Attributes: users, devices, rules
-    - Methods: addDevice, sendCommand, monitorDevice, deleteDevice, registerUser, updateUser, deleteUser, createRules, deleteRules
+    - Methods: addDevice, sendCommand, monitorDevice, deleteDevice, registerUser, updateUser, deleteUser, createRule, activateRule, deactivateRule, deleteRule
 2. Device
     - Attributes: status, deviceId
+    - Methods: sendCommand
 3. User
     - Attributes: isAdmin, userId
     - Methods:
 4. Command
     - Attributes: deviceId, commandId
 5. Rule
-    - Attributes: condition, automation, ruleId
+    - Attributes: condition, commands, ruleId
     - Methods: activate
 
 ## Target Audiences
@@ -100,6 +101,7 @@ SmartNest brings all of your compatible smart devices to the tip of your fingers
     3. *"As a property manager, I want to receive aggregated alerts and performance analytics for each property so that I can prioritize maintenance tasks and ensure consistent operation across all sites."*
 
 ## UML Class Diagram
+![uml](./assets/images/uml.png)
 
 ## Low Fidelity Prototype
 
