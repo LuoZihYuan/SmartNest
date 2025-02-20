@@ -1,0 +1,10 @@
+{
+  "commandId": "6894439706274654514",
+  "status": "SUCCESS",
+  "payload": {
+    "deviceId": "123",
+    "on": true,
+    "mode": "Heat",
+    "temperature": 72
+  }
+}

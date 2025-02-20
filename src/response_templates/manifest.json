@@ -1,0 +1,29 @@
+{
+  "commandId": "6894439706274654512",
+  "status": "SUCCESS",
+  "payload": {
+    "deviceId": "123",
+    "controls": [
+      {
+        "type": "onoff"
+      },
+      {
+        "type": "mode",
+        "options": ["Heat", "Cool", "Heat & Cool", "Eco"]
+      },
+      {
+        "type": "temperature",
+        "unit": "Farenheit",
+        "min": 32,
+        "max": 100
+      }
+    ],
+    "info": {
+      "manufacturer": "Google Nest",
+      "name": "Thermostat",
+      "model": "4th gen",
+      "hwVersion": "4.0",
+      "swVersion": "11.4"
+    }
+  }
+}
