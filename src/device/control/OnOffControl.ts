@@ -5,31 +5,31 @@ import { ControlProtocol } from "./Control";
 type Constructor = new (...args: any[]) => {
   _deviceId: string;
   _connector: Connector;
-  load(manifest: { [key: string]: unknown }): unknown;
+  setup(manifest: { [key: string]: unknown }): unknown;
 };
 
 export const OnOffControl = <T extends Constructor>(Base: T) => {
   return class OnOffControl extends Base implements ControlProtocol {
-    private _onoff: boolean = true;
+    private _on: boolean = true;
 
-    public get onoff(): boolean {
-      return this._onoff;
+    public get on(): boolean {
+      return this._on;
     }
 
-    public load(manifest: { [key: string]: unknown }): OnOffControl {
-      super.load(manifest);
+    public setup(manifest: { [key: string]: unknown }): OnOffControl {
+      super.setup(manifest);
       return this;
     }
 
-    public setOnOff(onoff: boolean): Promise<object> {
+    public setOn(on: boolean): Promise<object> {
       return this._connector.execute({
         deviceId: this._deviceId,
-        onoff: onoff,
+        on: on,
       });
     }
 
-    public on(onoff: boolean): ControlProtocol {
-      this._onoff = onoff;
+    public update(on: boolean): ControlProtocol {
+      this._on = on;
       return this;
     }
   };

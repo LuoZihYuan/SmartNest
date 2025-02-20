@@ -1,4 +1,4 @@
 export interface ControlProtocol {
-  load(manifest: object): ControlProtocol;
-  on(...args: unknown[]): ControlProtocol;
+  setup(manifest: object): ControlProtocol;
+  update(...args: unknown[]): ControlProtocol;
 }

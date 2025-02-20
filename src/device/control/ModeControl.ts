@@ -5,7 +5,7 @@ import { ControlProtocol } from "./Control";
 type Constructor = new (...args: any[]) => {
   _deviceId: string;
   _connector: Connector;
-  load(manifest: { [key: string]: unknown }): unknown;
+  setup(manifest: { [key: string]: unknown }): unknown;
 };
 
 export const ModeControl = <T extends Constructor>(Base: T) => {
@@ -21,8 +21,8 @@ export const ModeControl = <T extends Constructor>(Base: T) => {
       return this._available_modes;
     }
 
-    public load(manifest: { [key: string]: unknown }): ModeControl {
-      super.load(manifest);
+    public setup(manifest: { [key: string]: unknown }): ModeControl {
+      super.setup(manifest);
       const settings = (
         manifest["controls"] as Array<{ [key: string]: unknown }>
       ).filter((control: { [key: string]: unknown }) => {
@@ -42,7 +42,7 @@ export const ModeControl = <T extends Constructor>(Base: T) => {
       });
     }
 
-    public on(mode: string): ModeControl {
+    public update(mode: string): ModeControl {
       this._mode = mode;
       return this;
     }

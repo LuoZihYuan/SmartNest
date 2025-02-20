@@ -1,4 +1,3 @@
-import crypto from "crypto";
 import { Connector } from "../Connector";
 
 export interface DeviceInfo {
@@ -10,17 +9,16 @@ export interface DeviceInfo {
 }
 
 export class Device {
-  private _deviceId: string;
+  private _deviceId: string | undefined;
   private _info: DeviceInfo | undefined;
   private _connector: Connector;
   public nickname: string = "";
 
   constructor(conn: Connector) {
-    this._deviceId = crypto.randomUUID();
     this._connector = conn;
   }
 
-  public get deviceId(): string {
+  public get deviceId(): string | undefined {
     return this._deviceId;
   }
 
@@ -28,7 +26,9 @@ export class Device {
     return this._info;
   }
 
-  public load(manifest: { [key: string]: unknown }) {
+  public setup(manifest: { [key: string]: unknown }): Device {
     this._info = manifest["info"] as DeviceInfo;
+    this._deviceId = manifest["deviceId"] as string;
+    return this;
   }
 }

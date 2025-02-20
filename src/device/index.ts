@@ -1,2 +1,3 @@
 export * from "./Device";
-export * from "./DeviceBuilder";
+export * from "./DeviceFactory";
+// export * from "./DeviceBuilder";

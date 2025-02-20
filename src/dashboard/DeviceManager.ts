@@ -1,9 +1,13 @@
 import { Connector } from "../Connector";
-import { Device, DeviceBuilder } from "../device";
+import { Device, DeviceFactory } from "../device";
 
 export class DeviceManager {
   private static _instance: DeviceManager;
-  private devices: Array<Device> = [];
+  private _devices: Array<Device> = [];
+
+  public get devices() {
+    return this._devices;
+  }
 
   private constructor() {}
 
@@ -14,17 +18,15 @@ export class DeviceManager {
 
   public async addDevice(url: string): Promise<DeviceManager> {
     const conn = new Connector(url);
-    const builder = new DeviceBuilder(conn);
-    await builder.setup();
-
+    const new_device = await DeviceFactory.instance.createDevice(conn);
+    this._devices.push(new_device);
     return this;
   }
 
-  public deleteDevice(): DeviceManager {
-    return this;
-  }
-
-  public sendCommand(): DeviceManager {
+  public deleteDevice(deviceId: string): DeviceManager {
+    this._devices = this._devices.filter((device) => {
+      return device.deviceId !== deviceId;
+    });
     return this;
   }
 }

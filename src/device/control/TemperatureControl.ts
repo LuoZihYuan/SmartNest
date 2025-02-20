@@ -5,7 +5,7 @@ import { ControlProtocol } from "./Control";
 type Constructor = new (...args: any[]) => {
   _deviceId: string;
   _connector: Connector;
-  load(manifest: { [key: string]: unknown }): unknown;
+  setup(manifest: { [key: string]: unknown }): unknown;
 };
 
 type Unit = "Celsius" | "Ferenheit" | "Kelvin";
@@ -28,8 +28,8 @@ export const TemperatureControl = <T extends Constructor>(Base: T) => {
       return this._range[1];
     }
 
-    public load(manifest: { [key: string]: unknown }): TemperatureControl {
-      super.load(manifest);
+    public setup(manifest: { [key: string]: unknown }): TemperatureControl {
+      super.setup(manifest);
       const settings = (
         manifest["controls"] as Array<{ [key: string]: unknown }>
       ).filter((control: { [key: string]: unknown }) => {
@@ -53,7 +53,7 @@ export const TemperatureControl = <T extends Constructor>(Base: T) => {
       });
     }
 
-    public on(temperature: number): TemperatureControl {
+    public update(temperature: number): TemperatureControl {
       this._temperature = temperature;
       return this;
     }
