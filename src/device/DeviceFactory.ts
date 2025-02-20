@@ -3,15 +3,34 @@ import { Connector } from "../Connector";
 import { DeviceBuilder } from "./DeviceBuilder";
 
 export class DeviceFactory {
+  /**
+   * Singleton instance of the DeviceFactory.
+   * @private
+   */
   private static _instance: DeviceFactory;
 
+  /**
+   * Private constructor to enforce singleton pattern.
+   * Use `DeviceFactory.instance` to access the instance.
+   * @private
+   */
   private constructor() {}
 
+  /**
+   * Gets the singleton instance of DeviceFactory.
+   * @returns {DeviceFactory} The singleton instance.
+   */
   public static get instance(): DeviceFactory {
     this._instance = this._instance || new DeviceFactory();
     return this._instance;
   }
 
+  /**
+   * Creates a new device using the provided connector.
+   * @param {Connector} conn - The connector to use for the device.
+   * @returns {Promise<Device>} A promise that resolves to the created device.
+   * @throws {Error} If the device manifest cannot be retrieved.
+   */
   public async createDevice(conn: Connector): Promise<Device> {
     await conn.connect();
     const manifest = conn.manifest;

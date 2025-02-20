@@ -12,21 +12,42 @@ const ControlMap: { [key: string]: (Base: Constructor) => Constructor } = {
 };
 
 export class DeviceBuilder {
+  /**
+   * The connector for the device.
+   * @private
+   */
   private _connector: Connector | undefined;
+
+  /**
+   * List of controls to be added to the device.
+   * @private
+   */
   private _controls: Array<string> = [];
 
-  public constructor() {}
-
+  /**
+   * Sets the connector for the device.
+   * @param {Connector} conn - The connector instance.
+   * @returns {DeviceBuilder} The updated DeviceBuilder instance.
+   */
   public setConnector(conn: Connector): DeviceBuilder {
     this._connector = conn;
     return this;
   }
 
+  /**
+   * Adds a control to the device.
+   * @param {string} control - The control to add.
+   * @returns {DeviceBuilder} The updated DeviceBuilder instance.
+   */
   public addControl(control: string): DeviceBuilder {
     this._controls.push(control);
     return this;
   }
-
+  /**
+   * Assembles and returns a new device with the specified connector and controls.
+   * @returns {Device} The assembled device.
+   * @throws {Error} If no connector is set or no controls are added before assembling.
+   */
   public assemble(): Device {
     if (!this._connector) {
       throw new Error("Set device connector before assembling.");
