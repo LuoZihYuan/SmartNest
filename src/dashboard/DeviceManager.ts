@@ -1,3 +1,4 @@
+import { User, UserRole } from "../User";
 import { Connector } from "../Connector";
 import { Device, DeviceFactory } from "../device";
 
@@ -16,14 +17,20 @@ export class DeviceManager {
     return this._instance;
   }
 
-  public async addDevice(url: string): Promise<DeviceManager> {
+  public async addDevice(user: User, url: string): Promise<DeviceManager> {
+    if (user.role !== UserRole.Admin) {
+      throw new Error("Only admins can add device");
+    }
     const conn = new Connector(url);
     const new_device = await DeviceFactory.instance.createDevice(conn);
     this._devices.push(new_device);
     return this;
   }
 
-  public deleteDevice(deviceId: string): DeviceManager {
+  public deleteDevice(user: User, deviceId: string): DeviceManager {
+    if (user.role !== UserRole.Admin) {
+      throw new Error("Only admins can delete device");
+    }
     this._devices = this._devices.filter((device) => {
       return device.deviceId !== deviceId;
     });
