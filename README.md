@@ -44,7 +44,9 @@ In your command line:
 - The first <ins><n>user</n></ins><sup>(N.)</sup> <ins><v>register</v>e</ins><sup>(V.)</sup>d in the <ins><n>dashboard</n></ins><sup>(N.)</sup> will be the <ins><n>admin</n></ins><sup>(N.)</sup>. Other <ins><n>user</n>s</ins><sup>(N.)</sup> will not be given the <ins><n>admin state</n></ins><sup>(N.)</sup> by default.
 - <ins><n>Admin</n>s</ins><sup>(N.)</sup> can <ins><v>update</v></ins><sup>(V.)</sup> the <ins><n>identity state</n></ins><sup>(N.)</sup> and <ins><v>delete</v></ins><sup>(V.)</sup> all <ins><n>users</n></ins><sup>(N.)</sup>.
 
-> [!NOTE] > <ins><n>Noun</n>s</ins><sup>(N.)</sup> are highlighted in green. <ins><v>Verb</v>s</ins><sup>(V.)</sup> are highlighted in red.
+> [!NOTE]
+>
+> - <ins><n>Noun</n>s</ins><sup>(N.)</sup> are highlighted in green. <ins><v>Verb</v>s</ins><sup>(V.)</sup> are highlighted in red.
 
 <style>
 v { background-color: DarkRed }
