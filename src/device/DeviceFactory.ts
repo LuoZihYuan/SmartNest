@@ -1,6 +1,6 @@
-import { Device } from "./Device";
-import { Connector } from "../Connector";
-import { DeviceBuilder } from "./DeviceBuilder";
+import { Device } from "./Device.js";
+import { Connector } from "../Connector.js";
+import { DeviceBuilder } from "./DeviceBuilder.js";
 
 export class DeviceFactory {
   /**

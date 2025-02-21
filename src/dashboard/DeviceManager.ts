@@ -1,6 +1,6 @@
-import { User, UserRole } from "../User";
-import { Connector } from "../Connector";
-import { Device, DeviceFactory } from "../device";
+import { User, UserRole } from "../User.js";
+import { Connector } from "../Connector.js";
+import { Device, DeviceFactory } from "../device/index.js";
 
 export class DeviceManager {
   /**

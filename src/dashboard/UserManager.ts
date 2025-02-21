@@ -1,4 +1,4 @@
-import { User, UserInfo, UserRole } from "../User";
+import { User, UserInfo, UserRole } from "../User.js";
 
 export class UserManager {
   /**

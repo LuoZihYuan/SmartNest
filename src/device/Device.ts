@@ -1,4 +1,4 @@
-import { Connector } from "../Connector";
+import { Connector } from "../Connector.js";
 
 /**
  * Represents device information.

@@ -1,6 +1,10 @@
-import { Device } from "./Device";
-import { Connector } from "../Connector";
-import { ModeControl, OnOffControl, TemperatureControl } from "./control";
+import { Device } from "./Device.js";
+import { Connector } from "../Connector.js";
+import {
+  ModeControl,
+  OnOffControl,
+  TemperatureControl,
+} from "./control/index.js";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Constructor = new (...args: any[]) => any;

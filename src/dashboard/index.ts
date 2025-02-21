@@ -1,3 +1,3 @@
-export * from "./Dashboard";
-export * from "./DeviceManager";
-export * from "./UserManager";
+export * from "./Dashboard.js";
+export * from "./DeviceManager.js";
+export * from "./UserManager.js";

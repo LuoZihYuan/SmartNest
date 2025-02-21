@@ -1,5 +1,5 @@
-import { Connector } from "../../Connector";
-import { ControlProtocol } from "./Control";
+import { Connector } from "../../Connector.js";
+import { ControlProtocol } from "./Control.js";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Constructor = new (...args: any[]) => {

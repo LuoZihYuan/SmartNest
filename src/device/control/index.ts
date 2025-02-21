@@ -6,6 +6,6 @@
  * @see {@link ./TemperatureControl}
  */
 
-export * from "./ModeControl";
-export * from "./OnOffControl";
-export * from "./TemperatureControl";
+export * from "./ModeControl.js";
+export * from "./OnOffControl.js";
+export * from "./TemperatureControl.js";

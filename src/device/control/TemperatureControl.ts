@@ -1,5 +1,5 @@
-import { Connector } from "../../Connector";
-import { ControlProtocol } from "./Control";
+import { Connector } from "../../Connector.js";
+import { ControlProtocol } from "./Control.js";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Constructor = new (...args: any[]) => {
@@ -22,7 +22,7 @@ export const TemperatureControl = <T extends Constructor>(Base: T) => {
      * The current temperature setting of the device.
      * @private
      */
-    private _temperature: number = 0;
+    private _temperature: number = 64;
 
     /**
      * The valid temperature range [min, max].
@@ -90,6 +90,7 @@ export const TemperatureControl = <T extends Constructor>(Base: T) => {
           `Temperature should fall within [${this._range[0]}, ${this._range[1]}] (${this._unit}).`
         );
       }
+      this.update(temperature);
       return this._connector.execute({
         deviceId: this._deviceId,
         temperature: temperature,

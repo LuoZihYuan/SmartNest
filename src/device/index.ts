@@ -5,5 +5,5 @@
  * @see {@link ./DeviceFactory}
  */
 
-export * from "./Device";
-export * from "./DeviceFactory";
+export * from "./Device.js";
+export * from "./DeviceFactory.js";

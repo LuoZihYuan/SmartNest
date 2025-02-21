@@ -1,5 +1,5 @@
-import { UserManager } from "./UserManager";
-import { DeviceManager } from "./DeviceManager";
+import { UserManager } from "./UserManager.js";
+import { DeviceManager } from "./DeviceManager.js";
 export class Dashboard {
   /**
    * Instance of the UserManager, providing access to user-related operations.
