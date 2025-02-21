@@ -328,7 +328,7 @@ program
     const temp = parseFloat(temperature);
     try {
       // Assume the device has a setTemperature method (provided by TemperatureControl).
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
       await (device as any).setTemperature(temp);
       console.log(`Temperature set to ${temp}.`);
     } catch (error) {
@@ -353,7 +353,7 @@ program
       process.exit(1);
     }
     // Assume the device has a temperature getter (provided by TemperatureControl).
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
     const currentTemp = (device as any).temperature;
     console.log(`Current temperature of device ${deviceId}: ${currentTemp}`);
   });
