@@ -6,6 +6,7 @@ type Constructor = new (...args: any[]) => {
   _deviceId: string;
   _connector: Connector;
   setup(manifest: { [key: string]: unknown }): unknown;
+  update(...args: unknown[]): unknown;
 };
 
 /**
@@ -18,9 +19,9 @@ export const OnOffControl = <T extends Constructor>(Base: T) => {
   return class OnOffControl extends Base implements ControlProtocol {
     /**
      * The current on/off state of the device.
-     * @private
+     * @protected
      */
-    private _on: boolean = true;
+    protected _on: boolean = false;
 
     /**
      * Gets the current power state of the device.
@@ -57,7 +58,8 @@ export const OnOffControl = <T extends Constructor>(Base: T) => {
      * @param {boolean} on - The new on/off state.
      * @returns {ControlProtocol} The updated control protocol instance.
      */
-    public update(on: boolean): ControlProtocol {
+    public update({ on, ...args }: { on: boolean }): OnOffControl {
+      super.update(args);
       this._on = on;
       return this;
     }

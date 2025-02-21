@@ -6,6 +6,7 @@ type Constructor = new (...args: any[]) => {
   _deviceId: string;
   _connector: Connector;
   setup(manifest: { [key: string]: unknown }): unknown;
+  update(...args: unknown[]): unknown;
 };
 
 type Unit = "Celsius" | "Ferenheit" | "Kelvin";
@@ -20,21 +21,21 @@ export const TemperatureControl = <T extends Constructor>(Base: T) => {
   return class TemperatureControl extends Base implements ControlProtocol {
     /**
      * The current temperature setting of the device.
-     * @private
+     * @protected
      */
-    private _temperature: number = 64;
+    protected _temperature: number = 64;
 
     /**
      * The valid temperature range [min, max].
-     * @private
+     * @protected
      */
-    private _range: Array<number> = [0, 0];
+    protected _range: Array<number> = [0, 0];
 
     /**
      * The unit of measurement for temperature.
-     * @private
+     * @protected
      */
-    private _unit: Unit = "Celsius";
+    protected _unit: Unit = "Celsius";
 
     /**
      * Gets the current temperature of the device.
@@ -90,7 +91,7 @@ export const TemperatureControl = <T extends Constructor>(Base: T) => {
           `Temperature should fall within [${this._range[0]}, ${this._range[1]}] (${this._unit}).`
         );
       }
-      this.update(temperature);
+      this.update({ temperature: temperature });
       return this._connector.execute({
         deviceId: this._deviceId,
         temperature: temperature,
@@ -102,7 +103,13 @@ export const TemperatureControl = <T extends Constructor>(Base: T) => {
      * @param {number} temperature - The new temperature value.
      * @returns {TemperatureControl} The updated TemperatureControl instance.
      */
-    public update(temperature: number): TemperatureControl {
+    public update({
+      temperature,
+      ...args
+    }: {
+      temperature: number;
+    }): TemperatureControl {
+      super.update(args);
       this._temperature = temperature;
       return this;
     }

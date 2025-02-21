@@ -18,21 +18,21 @@ export interface DeviceInfo {
 export class Device {
   /**
    * The unique identifier of the device.
-   * @private
+   * @protected
    */
-  private _deviceId: string | undefined;
+  protected _deviceId: string | undefined;
 
   /**
    * Information about the device.
-   * @private
+   * @protected
    */
-  private _info: DeviceInfo | undefined;
+  protected _info: DeviceInfo | undefined;
 
   /**
    * The connector used to communicate with the device.
-   * @private
+   * @protected
    */
-  private _connector: Connector;
+  protected _connector: Connector;
 
   /**
    * A user-defined nickname for the device.
@@ -72,6 +72,10 @@ export class Device {
   public setup(manifest: { [key: string]: unknown }): Device {
     this._info = manifest["info"] as DeviceInfo;
     this._deviceId = manifest["deviceId"] as string;
+    return this;
+  }
+
+  public update(): Device {
     return this;
   }
 }

@@ -6,6 +6,7 @@ type Constructor = new (...args: any[]) => {
   _deviceId: string;
   _connector: Connector;
   setup(manifest: { [key: string]: unknown }): unknown;
+  update(...args: unknown[]): unknown;
 };
 
 /**
@@ -18,15 +19,15 @@ export const ModeControl = <T extends Constructor>(Base: T) => {
   return class ModeControl extends Base implements ControlProtocol {
     /**
      * The current mode of the device.
-     * @private
+     * @protected
      */
-    private _mode: string | undefined;
+    protected _mode: string | undefined;
 
     /**
      * List of available modes for the device.
-     * @private
+     * @protected
      */
-    private _available_modes: Array<string> = [];
+    protected _available_modes: Array<string> = [];
 
     /**
      * Gets the current mode of the device.
@@ -81,7 +82,8 @@ export const ModeControl = <T extends Constructor>(Base: T) => {
      * @param {string} mode - The new mode to set.
      * @returns {ModeControl} The updated ModeControl instance.
      */
-    public update(mode: string): ModeControl {
+    public update({ mode, ...args }: { mode: string }): ModeControl {
+      super.update(args);
       this._mode = mode;
       return this;
     }
