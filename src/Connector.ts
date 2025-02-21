@@ -44,9 +44,9 @@ interface Result {
 export class Connector {
   /**
    * Unique identifier for the connector instance.
-   * @protected
+   * @private
    */
-  protected _connectorId: string;
+  private _connectorId: string;
 
   /**
    * The URL of the connector.
@@ -56,9 +56,9 @@ export class Connector {
 
   /**
    * Cached manifest data from the connected device.
-   * @protected
+   * @private
    */
-  protected cached_manifest: { [key: string]: unknown } | undefined;
+  private cached_manifest: { [key: string]: unknown } | undefined;
 
   /**
    * Creates a new Connector instance.
@@ -84,7 +84,7 @@ export class Connector {
    * @param {{ [key: string]: unknown }} [payload] - The optional command payload.
    * @returns {Promise<{ [key: string]: unknown } | undefined>} A promise resolving to the command response payload.
    */
-  protected sendCommand(
+  private sendCommand(
     type: CommandType,
     payload?: { [key: string]: unknown }
   ): Promise<{ [key: string]: unknown } | undefined> {
@@ -145,5 +145,7 @@ export class Connector {
   /**
    * Disconnects from the smart device.
    */
-  public disconnect(): void {}
+  public disconnect(): Connector {
+    return this;
+  }
 }
