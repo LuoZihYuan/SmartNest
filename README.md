@@ -26,8 +26,9 @@ In your command line:
 1. `smartnest register-user Diya`
 2. `smartnest list-users`
 3. `smartnest add-device "www.sample.com"`
-4. `smartnest set-temperature 123 64`
-5. `smartnest get-temperature 123`
+4. `smartnest list-devices`
+5. `smartnest set-temperature 123 64`
+6. `smartnest get-temperature 123`
 
 > [!NOTE]
 >
