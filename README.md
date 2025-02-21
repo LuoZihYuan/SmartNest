@@ -17,7 +17,7 @@ In your command line:
 
 1. Clone the repository to your machine, and `cd` into it.
 2. Execute `pnpm install`
-3. Execute `pnpm run start; npm link;`
+3. Execute `pnpm run build; pnpm run start; npm link;`
 
 ### Test it out
 
