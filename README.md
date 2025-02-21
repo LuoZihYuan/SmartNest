@@ -38,11 +38,17 @@ In your command line:
 
 ### Functional (with highlighted nouns and verbs)
 
-- The <ins><n>user</n>s</ins><sup>(N.)</sup> should be able to <ins><v>add</v></ins><sup>(V.)</sup> their smart <ins><n>device</n>s</ins><sup>(N.)</sup> to the <ins><n>dashboard</n></ins><sup>(N.)</sup> and <ins><v>send</v></ins><sup>(V.)</sup> <ins><n>command</n>s</ins><sup>(N.)</sup> to them.
-- The <ins><n>dashboard</n></ins><sup>(N.)</sup> <ins><v>monitor</v>s</ins><sup>(V.)</sup> all <ins><n>status</n></ins><sup>(N.)</sup> of the <ins><n>device</n>s</ins><sup>(N.)</sup>, and have the ability to <ins><v>notify</v></ins><sup>(V.)</sup> <ins><n>user</n>s</ins><sup>(N.)</sup> when anomaly occurs.
-- <ins><n>User</n>s</ins><sup>(N.)</sup> can <ins><v>create</v></ins><sup>(V.)</sup> automation <ins><n>rule</n>s</ins><sup>(N.)</sup> that gets <ins><v>activate</v>d</ins><sup>(V.)</sup> when certain <ins><n>condition</n>s</ins><sup>(N.)</sup> have been <ins><v>met</v></ins><sup>(V.)</sup>.
-- The first <ins><n>user</n></ins><sup>(N.)</sup> <ins><v>register</v>e</ins><sup>(V.)</sup>d in the <ins><n>dashboard</n></ins><sup>(N.)</sup> will be the <ins><n>admin</n></ins><sup>(N.)</sup>. Other <ins><n>user</n>s</ins><sup>(N.)</sup> will not be given the <ins><n>admin state</n></ins><sup>(N.)</sup> by default.
-- <ins><n>Admin</n>s</ins><sup>(N.)</sup> can <ins><v>update</v></ins><sup>(V.)</sup> the <ins><n>identity state</n></ins><sup>(N.)</sup> and <ins><v>delete</v></ins><sup>(V.)</sup> all <ins><n>users</n></ins><sup>(N.)</sup>.
+- <ins><n>User</n>s</ins><sup>(N.)</sup> should be able to <ins><v>add</v></ins><sup>(V.)</sup> their smart <ins><n>device</n>s</ins><sup>(N.)</sup> to the <ins><n>dashboard</n>'s</ins><sup>(N.)</sup> <ins><n>device manager</n></ins><sup>(N.)</sup>.
+
+- After <ins><v>add</v>ing</ins><sup>(V.)</sup> <ins><n>device</n>s</ins><sup>(N.)</sup>, <ins><n>user</n></ins><sup>(N.)</sup> can <ins><v>send</v></ins><sup>(V.)</sup> <ins><n>command</n>s</ins><sup>(N.)</sup> to them.
+
+- The <ins><n>dashboard</n></ins><sup>(N.)</sup> <ins><v>monitor</v>s</ins><sup>(V.)</sup> all <ins><n>status</n></ins><sup>(N.)</sup> of the <ins><n>device</n>s</ins><sup>(N.)</sup>.
+
+<!-- - <ins><n>User</n>s</ins><sup>(N.)</sup> can <ins><v>create</v></ins><sup>(V.)</sup> automation <ins><n>rule</n>s</ins><sup>(N.)</sup> that gets <ins><v>activate</v>d</ins><sup>(V.)</sup> when certain <ins><n>condition</n>s</ins><sup>(N.)</sup> have been <ins><v>met</v></ins><sup>(V.)</sup>. -->
+
+- The first <ins><n>user</n></ins><sup>(N.)</sup> <ins><v>register</v>ed</ins><sup>(V.)</sup> in the <ins><n>user manager</n></ins><sup>(N.)</sup> will be <ins><v>give</v>n</ins><sup>(V.)</sup>the <ins><n>admin role</n></ins><sup>(N.)</sup>. Other <ins><n>user</n>s</ins><sup>(N.)</sup> will be <ins><v>give</v>n</ins><sup>(V.)</sup> the <ins><n>member role</n></ins><sup>(N.)</sup> by default.
+
+- <ins><n>Admin</n>s</ins><sup>(N.)</sup> are able to <ins><v>update</v></ins><sup>(V.)</sup> the <ins><n>user role</n></ins><sup>(N.)</sup> and <ins><v>delete</v></ins><sup>(V.)</sup> <ins><n>users</n></ins><sup>(N.)</sup>.
 
 > [!NOTE]
 >
@@ -58,28 +64,42 @@ n { background-color: DarkGreen }
 - Automation rules should be feasable: does not conflict with one another, execution time not set to the past, ..., etc.
 - Commands should not violate the devices' limits.
 
-## Q&A
+## Q&A (Challenges)
 
+- Can the curtain automatically open 20% in the morning to wake me up?
+- Can the coffee maker pour me a cup of coffee as soon as I sit down to have my breakfast?
+- Will I be notified if there's any anomaly with my device?
 - Can I control a group of devices all at once?
-  > Not at the current stage, but we've been constantly hearing users talking about this. This item has already been tracked in our backlog, and there's currently no other items blocking it, so it might be implemented in the near future.
--
 
 ## Classify Nouns/Verbs into Classes/Attributes
 
 1. Dashboard
-   - Attributes: users, devices, rules
-   - Methods: addDevice, sendCommand, monitorDevice, deleteDevice, registerUser, updateUser, deleteUser, createRule, activateRule, deactivateRule, deleteRule
-2. Device
-   - Attributes: status, deviceId
-   - Methods: sendCommand
-3. User
-   - Attributes: isAdmin, userId
+
+   - Attributes: user_manager, device_manager
    - Methods:
-4. Command
-   - Attributes: deviceId, commandId
-5. Rule
-   - Attributes: condition, commands, ruleId
-   - Methods: activate
+
+2. UserManager
+
+   - Attributes: users
+   - Methods: registerUser, updateUser, deleteUser
+
+3. DeviceManager
+
+   - Attributes: devices
+   - Methods: addDevice, monitorDevice, deleteDevice
+
+4. User
+
+   - Attributes: userId, name, role
+   - Methods:
+
+5. Device
+
+   - Attributes: deviceId, status, deviceInfo
+   - Methods: setTemperature
+
+6. Command
+   - Attributes: commandId, commandType, payload
 
 ## Target Audiences
 
@@ -148,11 +168,11 @@ n { background-color: DarkGreen }
 
   3. _"As a property manager, I want to receive aggregated alerts and performance analytics for each property so that I can prioritize maintenance tasks and ensure consistent operation across all sites."_
 
-## UML Class Diagram
+## [UML Class Diagram](https://lucid.app/lucidchart/c22237bc-5dc3-4911-8c21-e1ddb36bae19/edit?viewport_loc=3525%2C-1469%2C4701%2C2318%2C0_0&invitationId=inv_14476330-52d1-4642-8ac9-ff2464069593)
 
 ![uml](./assets/images/uml.png)
 
-## Low Fidelity Wireframe
+## [Low Fidelity Wireframe](https://www.figma.com/design/q1G7NpbpJOM6q0C55qGfja/NEU_CS5010_Programming-Design-Paradigm?node-id=27-81&t=d2F06mFlQLZRtcbD-4)
 
 ### Monitor
 
