@@ -1,4 +1,5 @@
 > [!IMPORTANT]
+>
 > This is a simulation of a smart home management system, demonstrating the OOP concepts learned.
 
 # SmartNest
