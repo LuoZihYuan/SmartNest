@@ -35,6 +35,10 @@ In your command line:
 > - Execute `smartnest -h` for help
 > - Use `sn` as abbreviation alias for `smartnest`
 
+## Video Demonstration
+
+Watch on [YouTube](https://youtu.be/krr0F3sV-pU)
+
 ## Business Requirements
 
 ### Functional (with highlighted nouns and verbs)
@@ -185,6 +189,15 @@ n { background-color: DarkGreen }
 
 - _"As a homeowner, I want to create and schedule automation rules (like turning on lights at dusk and adjusting the thermostat at bedtime) so that my home operates efficiently and comfortably without my constant attention."_
   ![automation](./assets/images/wireframe_rule.png)
+
+## Documentation
+
+|  Model  | Version | Prompt                                                                                                              | Attachment                      |
+| :-----: | :-----: | ------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| ChatGPT |   4o    | Generate JSDoc when I provide my code to you. Do not quote the entire code I provided, only include the signatures. | All the codes that I've written |
+
+[Document Webpage](./docs/index.html)
+(Download and view it in your browser.)
 
 ## Applications of Programming Paradigms
 
@@ -668,12 +681,3 @@ n { background-color: DarkGreen }
     public setOn(on: boolean) {}
   }
   ```
-
-## Documentation
-
-|  Model  | Version | Prompt                                                                                                              | Attachment                      |
-| :-----: | :-----: | ------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| ChatGPT |   4o    | Generate JSDoc when I provide my code to you. Do not quote the entire code I provided, only include the signatures. | All the codes that I've written |
-
-[Document Webpage](./docs/index.html)
-(Download and view it in your browser.)
