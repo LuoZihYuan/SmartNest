@@ -177,6 +177,10 @@ n { background-color: DarkGreen }
 
 ![uml](./assets/images/uml.png)
 
+> [!NOTE]
+>
+> My implementation of different devices is not a straight forward one. However, when you think about it, you will soon notice the elegance behind it. The idea comes from a vision that any smart device manufacturers could easly configure their devices with a single json file, then SmartNest would be able to control it. Say we are adding a smart lamp device. The typical way is to hard code a lamp class, but we soon notice the original design does not support color control, so we modify for that. If another lamp wants mode control over dark/light mode, we have to modify that again. Notice how fast the class could bloat up, and how unnecessary it would be for a simple on/off lamp? My design, on the other hand, solves all these problems. **The Device class will dynamically extend different Control classes based on the configuration json file**, so that none of the unused properties will exist. This is done using javascript **Mixins**.
+
 ## [Low Fidelity Wireframe](https://www.figma.com/design/q1G7NpbpJOM6q0C55qGfja/NEU_CS5010_Programming-Design-Paradigm?node-id=27-81&t=d2F06mFlQLZRtcbD-4)
 
 ### Monitor
